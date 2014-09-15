@@ -16,7 +16,8 @@ module.exports = function ($stateProvider) {
     })
     .state('event.projector', {
       url: '/projector',
-      controller: 'ProjectorController'
+      controller: 'ProjectorController',
+      templateUrl: '/views/event/projector.html'
     });
 };
 
