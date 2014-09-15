@@ -1,0 +1,67 @@
+$projector-background: #005DAB;
+$dark-text: #353535;
+
+.projector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &-header {
+    @include display(flex);
+    @include align-items(flex-end);
+    padding: .5em;
+    background: white;
+
+    .logo {
+      max-height: 4em;
+    }
+
+    img {
+      max-height: 100%;
+    }
+
+  }
+
+  &-cta {
+    @include flex(1);
+    text-align: center;
+
+    &-prefix {
+      font-size: 1em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    &-phone {
+      font-size: 2.5em;
+      margin: 0;
+      color: $dark-text;
+      text-shadow: 0 1px 1px rgba(black, .5);
+    }
+  }
+
+  &-body {
+    height: 100%;
+    padding: 1em;
+    background: $projector-background;
+    box-shadow: inset 0 2px 5px rgba(black, .5);
+  }
+
+  .message {
+    font-size: .65em;
+    margin-bottom: .75em;
+    padding: .75em;
+    border-radius: 8px;
+
+    color: $dark-text;
+    border: 1px solid #D8D8D8;
+    background: white;
+
+    text-shadow: 0 1px 1px rgba(black, .15);
+    box-shadow: 0 2px 4px rgba(black, .5);
+
+  }
+}

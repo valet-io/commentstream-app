@@ -1,1 +1,19 @@
-Welcome to the event!
+<div class="projector">
+  <header class="projector-header">
+    <div class="logo">
+      <img src="http://placehold.it/500x500"/>
+    </div>
+    <div class="projector-cta">
+      <h2 class="projector-cta-prefix">Text Comments To</h2>
+      <h1 class="projector-cta-phone">999-555-1234</h1>
+    </div>
+    <div class="logo">
+      <img src="http://placehold.it/500x500"/>
+    </div>
+  </header>
+  <main class="projector-body">
+    <ul class="messages">
+      <li class="message" ng-repeat="message in messages">{{message.message}}</li>
+    </ul>
+  </main>
+</div>

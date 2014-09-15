@@ -54,5 +54,8 @@
     "angular": "global:angular",
     "Firebase": "global:Firebase",
     "env": "global:__env"
+  },
+  "dependencies": {
+    "angular-ui-router": "~0.2.10"
   }
 }

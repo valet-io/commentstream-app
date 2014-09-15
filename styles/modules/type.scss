@@ -1,0 +1,30 @@
+body {
+  font-size: 48px;
+  font-family: $font, sans-serif;
+  color: $text-color;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: .5em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: .25em;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+strong {
+  font-weight: 700;
+}
+
+small {
+  font-size: .75em;
+}
