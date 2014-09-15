@@ -168,8 +168,7 @@ gulp.task('watch', ['index', 'vendor', 'styles', 'templates', 'fonts'], function
 
 gulp.task('server', function (done) {
   var server = superstatic({
-    host: isEnv('development') && '0.0.0.0',
-    localEnv: require('./environments/' + env + '.json')
+    host: isEnv('development') && '0.0.0.0'
   });
 
   if (isEnv('development')) server.use(require('connect-livereload')()); 

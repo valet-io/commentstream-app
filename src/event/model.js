@@ -19,5 +19,3 @@ module.exports = function ($firebase, config) {
   
 
 };
-
-module.exports.$inject = ['$firebase'];
