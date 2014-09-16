@@ -1,6 +1,7 @@
 'use strict';
 
 require('angular').module('CommentStream', [
+  'firebase',
   require('../event')
 ])
 .config(useHtml5Mode);

@@ -1,23 +1,14 @@
 'use strict';
 
-module.exports = function ($scope) {
-  $scope.messages = [
-    {
-      message: 'Hi there! This is a comment that is up on the screen!'
-    },
-    {
-      message: 'Truly. This next comment is much longer. In fact, it is as long as text messages can be: 160 total characters. Any more and the phone will split it into parts. '
-    },
-    {
-      message: 'This is a bit more reasonable in length. The average message is like this. Two to three short sentences.'
-    },
-    {
-      message: 'Another message in between to force the last off my MBP screen.'
-    },
-    {
-      message: 'This last one (the oldest) runs just slightly off screen. Its contents are cut off eventually, but the first two lines show up on screen.'
-    }
-  ];
+module.exports = function ($scope, $firebase, $stateParams) {
+  var eventRef = new Firebase('https://commentstream-dev.firebaseio.com/events').child($stateParams.id);
+  var approvedRef = eventRef.child('messages').child('moderated').startAt(1).limit(10);
+  $scope.messages = $firebase(approvedRef).$asArray()
+  $scope.messages.$watch(function () {
+    $scope.messages.sort(function ($1, $2) {
+      return $2.approvedAt - $1.approvedAt;
+    });
+  });
 };
 
-module.exports.$inject = ['$scope'];
+module.exports.$inject = ['$scope', '$firebase', '$stateParams'];

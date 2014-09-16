@@ -86,7 +86,7 @@ gulp.task('vendor', function () {
     './components/angular/angular.js',
     './node_modules/angular-ui-router/release/angular-ui-router.js',
     './components/firebase/firebase.js',
-    './components/angularfire/angularfire.js'
+    './components/angularfire/dist/angularfire.js'
   ])
   .pipe(plugins.concat('vendor.js'))
   .pipe(plugins.if(isEnv('production', 'staging'), plugins.uglify()))
