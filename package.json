@@ -44,7 +44,7 @@
     "vinyl-buffer": "0.0.0",
     "vinyl-source-stream": "~0.1.1",
     "watchify": "~0.10",
-    "gulp-tasks": "bendrucker/gulp-tasks#v2.0.0"
+    "gulp-tasks": "bendrucker/gulp-tasks#v2.1.0"
   },
   "browserify": {
     "transform": [

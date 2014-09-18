@@ -32,11 +32,7 @@ var paths = {
 plugins.util.log('Environment:', plugins.util.colors.cyan(env));
 
 tasks.use('lint', ['./src/**/*.js', './test/**/*.js', './gulpfile.js']);
-
-gulp.task('clean', function () {
-  return gulp.src('build', {read: false})
-    .pipe(plugins.rimraf());
-});
+tasks.use('clean', 'build');
 
 internals.stripViewsFromPath = function () {
   return through.obj(function (file, enc, callback) {
