@@ -13,7 +13,6 @@
   "author": "Ben Drucker <bvdrucker@gmail.com> (http://www.bendrucker.me/)",
   "homepage": "https://github.com/bendrucker/commentstream-app",
   "devDependencies": {
-    "angular-ui-router": "~0.2.10",
     "browserify": "~4.2.3",
     "browserify-istanbul": "~0.1.1",
     "browserify-shim": "~3.6.0",
