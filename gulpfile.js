@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp        = require('gulp');
-var runSequence = require('run-sequence');
+var sequence = require('run-sequence');
 
 tasks.use('lint', ['./src/**/*.js', './test/**/*.js', './gulpfile.js']);
 tasks.use('clean', 'build');
@@ -25,7 +25,7 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('build', ['clean'], function (done) {
-  runSequence(['bundle', 'vendor', 'templates', 'styles', 'fonts'], 'index', done);
+  sequence(['bundle', 'vendor', 'templates', 'styles', 'fonts'], 'index', done);
 });
 
 gulp.task('serve', ['watch', 'server']);
