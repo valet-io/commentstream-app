@@ -61,19 +61,12 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest('./build/fonts'));
 });
 
-gulp.task('vendor', function () {
-  return gulp.src([
-    './components/angular/angular.js',
-    './node_modules/angular-ui-router/release/angular-ui-router.js',
-    './components/firebase/firebase.js',
-    './components/angularfire/dist/angularfire.js'
-  ])
-  .pipe(plugins.concat('vendor.js'))
-  .pipe(plugins.if(isEnv('production', 'staging'), plugins.uglify()))
-  .pipe(plugins.if(isEnv('production', 'staging'), plugins.rev()))
-  .pipe(plugins.if(isEnv('production', 'staging'), internals.manifest()))
-  .pipe(gulp.dest('./build/scripts'));
-});
+tasks.use('vendor', [
+  './components/angular/angular.js',
+  './node_modules/angular-ui-router/release/angular-ui-router.js',
+  './components/firebase/firebase.js',
+  './components/angularfire/dist/angularfire.js'
+], './build/scripts');
 
 internals.browserify = function (bundler) {
   bundler
