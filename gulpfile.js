@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp        = require('gulp');
+var tasks       = require('gulp-tasks');
 var plugins     = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var source      = require('vinyl-source-stream');
@@ -30,12 +31,7 @@ var paths = {
 
 plugins.util.log('Environment:', plugins.util.colors.cyan(env));
 
-gulp.task('lint', function () {
-  return gulp.src(['./src/**/*.js', './test/**/*.js', './gulpfile.js'])
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('jshint-stylish'))
-    .pipe(plugins.jshint.reporter('fail'));
-});
+tasks.use('lint', ['./src/**/*.js', './test/**/*.js', './gulpfile.js']);
 
 gulp.task('clean', function () {
   return gulp.src('build', {read: false})
