@@ -163,17 +163,6 @@ gulp.task('watch', ['index', 'vendor', 'styles', 'templates', 'fonts'], function
   return bundle();
 });
 
-gulp.task('server', function (done) {
-  var server = superstatic({
-    host: isEnv('development') && '0.0.0.0'
-  });
-
-  if (isEnv('development')) server.use(require('connect-livereload')()); 
-
-  server.listen(8000, function () {
-    plugins.util.log('Running on http://localhost:8000');
-    done();
-  });
-});
+tasks.use('server');
 
 gulp.task('serve', ['watch', 'server']);
