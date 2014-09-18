@@ -58,15 +58,7 @@ internals.manifest = function () {
   });
 };
 
-gulp.task('styles', function () {
-  return gulp.src('./styles/main.scss')
-    .pipe(plugins.sass({
-      includePaths: require('node-bourbon').includePaths
-    }))
-    .pipe(plugins.if(isEnv('production', 'staging'), plugins.rev()))
-    .pipe(plugins.if(isEnv('production', 'staging'), internals.manifest()))
-    .pipe(gulp.dest('./build/styles'));
-});
+tasks.use('styles', './styles/main.scss', './build/styles');
 
 gulp.task('fonts', function () {
   return gulp.src('./fonts/*')
