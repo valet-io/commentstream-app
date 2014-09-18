@@ -68,60 +68,12 @@ tasks.use('vendor', [
   './components/angularfire/dist/angularfire.js'
 ], './build/scripts');
 
-internals.browserify = function (bundler) {
-  bundler
-    .transform('browserify-shim');
-
-  if (isEnv('production', 'staging')) { 
-    bundler.transform('uglifyify');
-  }
-
-  return bundler
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(buffer());
-};
-
-internals.templates = function () {
-  return gulp.src(paths.templates)
-    .pipe(plugins.if(isEnv('production', 'staging'), plugins.htmlmin({
-      collapseWhitespace: true
-    })))
-    .pipe(internals.stripViewsFromPath())
-    .pipe(plugins.angularTemplatecache({
-      module: 'PledgeApp',
-      root: '/views'
-    }));
-};
-
-gulp.task('bundle', function () {
-  return streamqueue({objectMode: true},
-    internals.browserify(browserify(paths.main)),
-    internals.templates()
-  )
-  .pipe(plugins.concat('app.js'))
-  .pipe(plugins.if(isEnv('production', 'staging'), plugins.uglify()))
-  .pipe(plugins.if(isEnv('production', 'staging'), plugins.rev()))
-  .pipe(plugins.if(isEnv('production', 'staging'), internals.manifest()))
-  .pipe(gulp.dest(paths.build + '/scripts'));
+tasks.use('bundle', './src/index.js', './build/scripts', {
+  templates: './src/**/views/*.html',
+  module: 'CommentStream'
 });
 
-gulp.task('index', function () {
-  return gulp.src(paths.index)
-    .pipe(plugins.if(isEnv('production', 'staging'), plugins.htmlmin({
-      collapseWhitespace: true
-    })))
-    .pipe(plugins.if(isEnv('production', 'staging'), through.obj(function (file, enc, callback) {
-      var contents = String(file.contents);
-      for (var original in internals.hashes) {
-        contents = contents.replace(original, internals.hashes[original]);
-      }
-      file.contents = new Buffer(contents);
-      this.push(file);
-      callback();
-    })))
-    .pipe(gulp.dest('build'));
-});
+tasks.use('index', './src/index.html', './build');
 
 gulp.task('build', ['clean'], function (done) {
   runSequence(['bundle', 'vendor', 'templates', 'styles', 'fonts'], 'index', done);
