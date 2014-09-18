@@ -42,11 +42,7 @@ internals.stripViewsFromPath = function () {
   });
 };
 
-gulp.task('templates', function () {
-  return gulp.src('./src/**/views/*.html')
-    .pipe(internals.stripViewsFromPath())
-    .pipe(gulp.dest('build/views'));
-});
+tasks.use('templates', './src/**/views/*.html', 'build/views');
 
 internals.hashes = {};
 
