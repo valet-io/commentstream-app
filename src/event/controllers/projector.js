@@ -3,6 +3,9 @@
 module.exports = function ($scope, $firebase, $stateParams) {
   var eventRef = new Firebase('https://commentstream-dev.firebaseio.com/events').child($stateParams.id);
   var approvedRef = eventRef.child('messages').child('moderated').startAt(1).limit(10);
+  $scope.event = {
+    settings: $firebase(eventRef.child('settings')).$asObject()
+  };
   $scope.messages = $firebase(approvedRef).$asArray()
   $scope.messages.$watch(function () {
     $scope.messages.sort(function ($1, $2) {
