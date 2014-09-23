@@ -1,7 +1,8 @@
 'use strict';
 
-var gulp        = require('gulp');
+var gulp     = require('gulp');
 var sequence = require('run-sequence');
+var tasks    = require('gulp-tasks');
 
 tasks.use('lint', ['./src/**/*.js', './test/**/*.js', './gulpfile.js']);
 tasks.use('clean', 'build');
