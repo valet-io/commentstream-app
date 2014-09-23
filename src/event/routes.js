@@ -9,10 +9,14 @@ module.exports = function ($stateProvider) {
     .state('event', {
       parent: 'events',
       url: '/:id',
-      template: '<ui-view/>'
+      controller: 'EventController',
+      template: '<ui-view/>',
+      resolve: require('./controllers/event').resolve
     })
-    .state('event.edit', {
-      url: '/edit'
+    .state('event.moderate', {
+      url: '/moderate',
+      controller: 'ModerateController',
+      templateUrl: '/views/event/moderate.html'
     })
     .state('event.projector', {
       url: '/projector',
