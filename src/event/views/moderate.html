@@ -20,7 +20,7 @@
     </div>
     <footer class="moderator-footer">
       <span class="metadata">
-        {{moderating.from}} • {{moderating.receivedAt | date:'h:mma'}}
+        {{moderating.from}} • {{moderating.receivedAt | date:'h:mma' | lowercase}}
       </span>
       <div class="action-buttons">
         <!-- <button ng-click=""><i class="icon-pencil"></i></button> -->
@@ -30,7 +30,7 @@
   </div>
   <div class="moderated">
     <div class="moderated-message" ng-repeat="message in shown | orderBy:'moderatedAt':true">
-      <span class="time">{{message.receivedAt | date:'h:mma'}}</span>
+      <span class="time">{{message.receivedAt | date:'h:mma' | lowercase}}</span>
       <span class="body">{{message.body}}</span>
       <div class="action-buttons">
         <button class="button button-round" ng-click="hide(message)"><i class="icon-times"></i></button>
