@@ -8,6 +8,7 @@ $dark-text: #353535;
   width: 100%;
   height: 100%;
   overflow: hidden;
+  font-size: 3em;
 
   &-header {
     @include display(flex);
@@ -16,7 +17,7 @@ $dark-text: #353535;
     background: white;
 
     .logo {
-      max-height: 4em;
+      height: 4em;
     }
 
     img {
