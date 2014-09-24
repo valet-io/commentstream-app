@@ -11,11 +11,12 @@ module.exports = function ($firebase) {
     this.ref = events.child(id);
     this.settings = $firebase(this.ref.child('settings')).$asObject();
     var messages = this.ref.child('messages');
-    this.messages = {
-      moderated: messages.child('moderated'),
-      queue: messages.child('toModerate')
-    };
-    this.messages.approved = this.messages.moderated.limit(10).endAt();
+    this.messages = {};
+    ['shown', 'hidden', 'queue'].forEach(function (list) {
+      this.messages[list] = function () {
+        return messages.child(list);
+      };
+    }, this);
   };
 
 };

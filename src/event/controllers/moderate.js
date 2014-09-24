@@ -1,21 +1,27 @@
 'use strict';
 
+var angular = require('angular');
+
 module.exports = function ($scope, event, $firebase, $firebaseUtils) {
-  $scope.queue = $firebase(event.messages.queue).$asArray();
+  var shown = event.messages.shown();
+  var hidden = event.messages.hidden();
+  var queue = event.messages.queue();
+
+  $scope.queue = $firebase(queue).$asArray();
   Object.defineProperty($scope, 'moderating', {
     get: function () {
       return $scope.queue[0];
     }
   });
-
-  $scope.all = $firebase(event.messages.moderated).$asArray();
-
   $scope.moderate = function (message, approved) {
     var msg = $firebaseUtils.toJSON(message);
-    msg.moderatedAt = Date.now();
-    msg['.priority'] = (approved ? 1 : -1) * msg.moderatedAt;
-    event.messages.moderated.push(msg, function () {
-      event.messages.queue.child(message.$id).remove();
+    var now = Date.now();
+    angular.extend(msg, {
+      moderatedAt: now,
+      '.priority': now
+    });
+    (approved ? shown : hidden).push(msg, function () {
+      queue.child(message.$id).remove();
     });
   };
 
