@@ -10,3 +10,6 @@ deploy:
   environment: development
   on:
     repo: valet-io/commentstream-app
+notifications:
+  slack:
+    secure: hANao7qJ4dtAYqK9GOx/9JEUeIDRSZqBglcN0+l7faCSkVnIN7Mav7lnBLqbIGCygRLPal41zra5jztv2MHBjgddpkSpwJDUlRz9TeVCqCp7tcEFE1rCtY3cbya4c/Z5O3AeCoeSdMPQas2SD4d/RorkFCJDLQ5K9zxBbkDXc9Y=
