@@ -20,6 +20,16 @@ tasks.use('bundle', './src/index.js', './build/scripts', {
 });
 tasks.use('index', './src/index.html', './build');
 tasks.use('server');
+tasks.use('watch', {
+  './src/**/views/*.html': 'templates',
+  './src/index.html': 'index',
+  './styles/**/*.scss': 'styles',
+  './src/index.js': 'bundle'
+}, null,
+{
+  build: './build',
+  prerequisites: ['templates', 'styles', 'vendor', 'fonts', 'index']
+});
 
 gulp.task('fonts', function () {
   return gulp.src('./fonts/*').pipe(gulp.dest('./build/fonts'));
