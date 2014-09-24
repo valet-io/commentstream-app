@@ -15,7 +15,7 @@ module.exports = function ($firebase) {
       moderated: messages.child('moderated'),
       queue: messages.child('toModerate')
     };
-    this.messages.approved = this.messages.moderated.startAt(1);
+    this.messages.approved = this.messages.moderated.limit(10).endAt();
   };
 
 };
