@@ -1,6 +1,9 @@
 language: node_js
 node_js:
 - '0.10'
+before_install:
+- npm i -g bower
+- bower i
 before_deploy: gulp build
 deploy:
   provider: divshot
