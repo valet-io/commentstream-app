@@ -1,0 +1,26 @@
+.button {
+  padding: .5em;
+  color: $text-color;
+  background: none;
+  border: 1px solid $text-color;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+.button-round {
+  font-size: .5em;
+  width: 3em;
+  height: 3em;
+  line-height: 1em;
+  text-align: center;
+  border-radius: 100%;
+  border-width: 2px;
+
+  i {
+    font-size: 1.5em;    
+  }
+}

@@ -14,16 +14,18 @@
   </header>
   <div ng-if="moderating" class="moderator">
     <div class="moderator-body">
-      {{moderating.body}}
+      <p class="text">
+        {{moderating.body}}
+      </p>
     </div>
-    <footer>
+    <footer class="moderator-footer">
       <span class="metadata">
-        {{moderating.from}} at {{moderating.receivedAt | date:'h:mma'}}
+        {{moderating.from}} • {{moderating.receivedAt | date:'h:mma'}}
       </span>
       <div class="action-buttons">
         <!-- <button ng-click=""><i class="icon-pencil"></i></button> -->
-        <button ng-click="moderate(moderating, false)"><i class="icon-times"></i></button>
-        <button ng-click="moderate(moderating, true)"><i class="icon-check"></i></button>
+        <button class="button button-round" ng-click="moderate(moderating, false)"><i class="icon-times"></i></button>
+        <button class="button button-round" ng-click="moderate(moderating, true)"><i class="icon-check"></i></button>
     </footer>
   </div>
 </div>

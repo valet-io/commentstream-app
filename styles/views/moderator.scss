@@ -1,0 +1,39 @@
+.moderator {
+  border: 2px $button-primary-color solid;
+  border-radius: 5px;
+
+  $padding: 1em;
+
+  &-body {
+    padding: $padding;
+
+    .text {
+      font-size: 1.35em;
+      margin: .25em 0;
+    }
+  }
+
+  &-footer {
+    @include display(flex);
+    @include justify-content(space-between);
+    @include align-items(center);
+    padding: $padding / 2 $padding;
+    background: $button-primary-color;
+    color: white;
+
+    .metadata {
+      display: block;
+      color: #D8D8D8;
+    }
+  }
+
+  .action-buttons .button {
+    margin: 0 .5em;
+    color: white;
+    border-color: white;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
