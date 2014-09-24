@@ -1,17 +1,29 @@
-<header>
-  <h1>{{event.settings.name}}</h1>
-</header>
-<div ng-if="moderating" class="moderator">
-  <div class="body">
-    {{moderating.body}}
+<div class="container">
+  <header class="main-header">
+    <h2 class="cs-faux-logo">CS</h2>
+    <nav class="main-nav">
+      <ul>
+        <li>Events</li>
+        <li>Users</li>
+        <li>Logout</li>
+      </ul>
+    </nav>
+  </header>
+  <header>
+    <h1>{{event.settings.name}}</h1>
+  </header>
+  <div ng-if="moderating" class="moderator">
+    <div class="moderator-body">
+      {{moderating.body}}
+    </div>
+    <footer>
+      <span class="metadata">
+        {{moderating.from}} at {{moderating.receivedAt | date:'h:mma'}}
+      </span>
+      <div class="action-buttons">
+        <!-- <button ng-click=""><i class="icon-pencil"></i></button> -->
+        <button ng-click="moderate(moderating, false)"><i class="icon-times"></i></button>
+        <button ng-click="moderate(moderating, true)"><i class="icon-check"></i></button>
+    </footer>
   </div>
-  <footer>
-    <span class="metadata">
-      {{moderating.from}} at {{moderating.receivedAt | date:'h:mma'}}
-    </span>
-    <div class="action-buttons">
-      <!-- <button ng-click=""><i class="icon-pencil"></i></button> -->
-      <button ng-click="moderate(moderating, false)"><i class="icon-times"></i></button>
-      <button ng-click="moderate(moderating, true)"><i class="icon-check"></i></button>
-  </footer>
 </div>

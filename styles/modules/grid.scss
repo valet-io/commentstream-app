@@ -2,6 +2,10 @@ html, body {
   height: 100%;
 }
 
+.container {
+  padding: 1.5em;
+}
+
 ui-view {
   display: block;
 }

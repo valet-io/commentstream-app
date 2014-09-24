@@ -1,0 +1,22 @@
+.main-header {
+  margin-bottom: 2em;
+  padding: .5em 0;
+  border-bottom: 2px solid #D8D8D8;
+  @include display(flex);
+  @include justify-content(space-between);
+}
+
+.cs-faux-logo {
+  color: $button-primary-color;
+}
+
+.main-nav {
+  font-weight: 600;
+  li {
+    display: inline;
+    padding: .5em;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
