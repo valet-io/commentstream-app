@@ -37,3 +37,34 @@
     }
   }
 }
+
+.moderated {
+  margin: 2em 0;
+
+  &-message {
+    @include display(flex);
+    @include align-items(center);
+    padding: .5em 0;
+    border: 0 solid #9B9B9B;
+    border-top-width: 2px;
+
+    &:last-child {
+      border-bottom-width: 2px;
+    }
+  }
+
+  .time {
+    margin-right: 2em;
+    font-weight: 300;
+    color: #979797;
+  }
+
+  .body {
+    width: 100%;
+    color: #5A5A5A;
+  }
+
+  .button {
+    font-size: .5em;
+  }
+}

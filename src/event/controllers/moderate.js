@@ -13,6 +13,9 @@ module.exports = function ($scope, event, $firebase, $firebaseUtils) {
       return $scope.queue[0];
     }
   });
+  $scope.shown = $firebase(shown).$asArray();
+  $scope.hidden = $firebase(hidden).$asArray();
+
   $scope.moderate = function (message, approved) {
     var msg = $firebaseUtils.toJSON(message);
     var now = Date.now();
@@ -22,6 +25,18 @@ module.exports = function ($scope, event, $firebase, $firebaseUtils) {
     });
     (approved ? shown : hidden).push(msg, function () {
       queue.child(message.$id).remove();
+    });
+  };
+
+  $scope.hide = function (message) {
+    var msg = $firebaseUtils.toJSON(message);
+    var now = Date.now();
+    angular.extend(msg, {
+      moderatedAt: now,
+      '.priority': now
+    });
+    hidden.push(msg, function () {
+      shown.child(message.$id).remove();
     });
   };
 

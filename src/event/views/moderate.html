@@ -28,4 +28,12 @@
         <button class="button button-round" ng-click="moderate(moderating, true)"><i class="icon-check"></i></button>
     </footer>
   </div>
+  <div class="moderated">
+    <div class="moderated-message" ng-repeat="message in shown | orderBy:'moderatedAt':true">
+      <span class="time">{{message.receivedAt | date:'h:mma'}}</span>
+      <span class="body">{{message.body}}</span>
+      <div class="action-buttons">
+        <button class="button button-round" ng-click="hide(message)"><i class="icon-times"></i></button>
+      </div>
+    </div>
 </div>
