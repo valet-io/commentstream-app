@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '0.10'
+before_deploy: gulp build
+deploy:
+  provider: divshot
+  skip_cleanup: true
+  api_key:
+    secure: Q7McrWJ/+hQvEPeqrWULRGqXRQut/ZGjzuvpicVOqn6YEnJ/uRl8s0fI+oItvE6HUj9YekGLphA+JAgB/EkFpDJG0swgkgfQyczBHTEBXZbhi/6NkTLhvatoJhCb0N55nzpj2pm6LsZf/YZIqP6udNRtY5BTFG/OQu/njubSYGU=
+  environment: development
+  on:
+    repo: valet-io/commentstream-app
