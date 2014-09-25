@@ -31,6 +31,7 @@ $dark-text: #353535;
 
   &-cta {
     @include flex(1);
+    padding: 0 .5em;
     text-align: center;
 
     &-prefix {
@@ -40,12 +41,24 @@ $dark-text: #353535;
     }
 
     &-phone {
-      font-size: 2.5em;
+      font-size: 1.5em;
       line-height: .75em;
       margin-top: .1em;
       margin-bottom: 0;
       color: $dark-text;
       text-shadow: 0 1px 1px rgba(black, .5);
+
+      @media (min-width: 1024px) {
+        font-size: 1.7em;
+      }
+
+      @media (min-width: 1100px) {
+        font-size: 2em;
+      }
+
+      @media (min-width: 1280px) {
+        font-size: 2.5em;
+      }
     }
   }
 
