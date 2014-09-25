@@ -28,6 +28,13 @@ module.exports = function ($scope, event, $firebase, $firebaseUtils) {
     });
   };
 
+  $scope.log = {
+    toggle: function () {
+      this.shown = !this.shown
+    },
+    shown: true
+  }
+
   $scope.hide = function (message) {
     var msg = $firebaseUtils.toJSON(message);
     var now = Date.now();
@@ -37,6 +44,18 @@ module.exports = function ($scope, event, $firebase, $firebaseUtils) {
     });
     hidden.push(msg, function () {
       shown.child(message.$id).remove();
+    });
+  };
+
+  $scope.show = function (message) {
+    var msg = $firebaseUtils.toJSON(message);
+    var now = Date.now();
+    angular.extend(msg, {
+      moderatedAt: now,
+      '.priority': now
+    });
+    shown.push(msg, function () {
+      hidden.child(message.$id).remove();
     });
   };
 

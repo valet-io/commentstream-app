@@ -28,7 +28,12 @@
         <button class="button button-round" ng-click="moderate(moderating, true)"><i class="icon-check"></i></button>
     </footer>
   </div>
-  <div class="moderated">
+  <a href="#" ng-click="log.toggle()">
+    View
+      <span ng-show="log.shown"> hidden messages</span>
+      <span ng-hide="log.shown"> shown messages</span>
+  </a>
+  <div class="moderated" ng-show="log.shown">
     <div class="moderated-message" ng-repeat="message in shown | orderBy:'moderatedAt':true">
       <span class="time">{{message.receivedAt | date:'h:mma' | lowercase}}</span>
       <span class="body">{{message.body}}</span>
@@ -36,4 +41,14 @@
         <button class="button button-round" ng-click="hide(message)"><i class="icon-times"></i></button>
       </div>
     </div>
+  </div>
+  <div class="moderated" ng-hide="log.shown">
+    <div class="moderated-message" ng-repeat="message in hidden | orderBy:'moderatedAt':true">
+      <span class="time">{{message.receivedAt | date:'h:mma' | lowercase}}</span>
+      <span class="body">{{message.body}}</span>
+      <div class="action-buttons">
+        <button class="button button-round" ng-click="show(message)"><i class="icon-check"></i></button>
+      </div>
+    </div>
+  </div>
 </div>
